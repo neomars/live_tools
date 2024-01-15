@@ -5,6 +5,7 @@ import ta
 from utilities.perp_bitget import PerpBitget
 import pandas as pd
 import json
+import time
 
 account_to_select = "bitget_exemple"
 production = True
@@ -97,6 +98,7 @@ if len(positions) > 0:
             price=price,
             reduce=False,
         )
+        time.sleep(1)
 
     first_sell_envelope = len(envelopes) - len(sell_orders)
     for i in range(first_sell_envelope, len(envelopes)):
@@ -110,6 +112,7 @@ if len(positions) > 0:
             price=price,
             reduce=False,
         )
+        time.sleep(1)
 
 else:
     for i in range(len(envelopes)):
@@ -123,6 +126,7 @@ else:
             price=price,
             reduce=False,
         )
+        time.sleep(1)
 
     for i in range(len(envelopes)):
         price = df.iloc[-2][f"ma_low_{i+1}"]
@@ -135,3 +139,4 @@ else:
             price=price,
             reduce=False,
         )
+        time.sleep(1)
